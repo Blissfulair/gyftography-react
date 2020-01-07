@@ -1,13 +1,96 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: "Poppins";
+  src: url("fonts/Poppins-Regular.woff")  format('woff');
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: "Poppins-Medium";
+  src: url("fonts/Poppins-Medium.woff") format('woff');
+}
+@font-face {
+  font-family: "Poppins-SemiBold";
+  src: url("fonts/Poppins-SemiBold.woff") format('woff');
+}
+@font-face {
+  font-family: "Poppins-Bold";
+  src: url("fonts/Poppins-Bold.woff") format('woff');
+}
+@font-face {
+  font-family: "Poppins-Black";
+  src: url("fonts/Poppins-Black.woff") format('woff');
+}
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: none;
+  box-shadow: none;
+}
+*:focus{
+  outline: 0;
+}
+body{
+  font-family: 'Poppins';
+  min-height: 100vh;
+  min-width: 100%;
+  flex-direction:row;
+  text-rendering: optimizeSpeed;
+  scroll-behavior: smooth;
+  --background-color: #fff;
+  --primary-color: #FFB60A;
+  --title-color:#C40000;
+  --main-color:#fff;
+  --main-shadow: #00000029;
+  --links-color:#15C2DE;
+  --main-overlay:rgba(0,0,0,0.7);
+  --secondary-text-color:#000000;
+  --button-text-color:#000;
+  --input-border:#919191;
+  --portfolio-nav:#434343;
+  --slide-background:#E8E8E8;
+  --footer-border-color: #000808;
+  --footer-theme:#065764;
+  --knob-color: #15C2DE;
+  --loader-bgcolor:#010814;
+}
+a:hover, button:hover{
+  opacity: .8;
+  transition: all 1000ms ease-in-out;
+}
+
+/* .theme{
+  position: fixed;
+  bottom: 5%;
+  display: grid;
+  grid-template-columns: 80% 20%;
+  width: 300px;
+  z-index: 99999999999999999999999999999;
+  cursor: pointer;
+  align-items: center;
+  transition: all 500ms ease-in-out;
+}
+.theme:active{
+  opacity: 0.8;
+}
+.activate span{
+  width: 30px;
+  height: 30px;
+  display: block;
+  transform: rotate(45deg) translate(-18px, 30px);
+  border-left: none;
+  border-bottom: none;
+  cursor: pointer;
+  background: #C40000;
+} */
+
+
+
+.site{
+  width: 100%;
+  display: flex;
+}
+.main{
+  width: 100%;
+}
+.menu{
+  transition: all 500ms ease-in-out;
 }

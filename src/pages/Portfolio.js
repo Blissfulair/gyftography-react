@@ -50,6 +50,9 @@ componentDidMount(){
         .catch(error=>this.setState({loading:false,err:error.response.data}))
     })
 }
+componentWillUnmount(){
+    this.setState({loading:false,categories:[]})
+}
 
 //portfolio nav item active
 nav = (e)=>{
@@ -125,18 +128,6 @@ next =()=>{
         
         const portfolioDom = (
                 <div>
-                    <h2>PORTFOLIO</h2>
-                    <div className="nav">
-                        <ul className="navItem">
-                        <Router>
-                            <li><Link onClick={this.nav} data-slide="all" className="active" to="/">All</Link></li>
-                            <li><Link onClick={this.nav} data-slide="wedding" to="/">Wedding</Link></li>
-                            <li><Link onClick={this.nav} data-slide="portrait" to="/">Portrait</Link></li>
-                            <li><Link onClick={this.nav} data-slide="fashion" to="/">Fashion</Link></li>
-                            <li><Link onClick={this.nav} data-slide="art" to="/">Art</Link></li>
-                        </Router>
-                        </ul>
-                    </div>
                     {portfolios.length ? (
                         <div className="row">
                             {portfolios.map(portfolio=>{
@@ -186,6 +177,18 @@ next =()=>{
         )
         return (
             <div>
+                <h2>PORTFOLIO</h2>
+                    <div className="nav">
+                        <ul className="navItem">
+                        <Router>
+                            <li><Link onClick={this.nav} data-slide="all" className="active" to="/">All</Link></li>
+                            <li><Link onClick={this.nav} data-slide="wedding" to="/">Wedding</Link></li>
+                            <li><Link onClick={this.nav} data-slide="portrait" to="/">Portrait</Link></li>
+                            <li><Link onClick={this.nav} data-slide="fashion" to="/">Fashion</Link></li>
+                            <li><Link onClick={this.nav} data-slide="art" to="/">Art</Link></li>
+                        </Router>
+                        </ul>
+                    </div>
                 {this.state.loading?(
                     <div className="row">
                         <div className="col" style={{ backgroundImage: `url(${portfolio})` }}></div>

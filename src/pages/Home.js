@@ -53,6 +53,7 @@ class Home extends React.Component{
 
     }
 
+
     //video content
 
     videoContent =()=>{
@@ -98,7 +99,9 @@ class Home extends React.Component{
     
     }
     goto=()=>{
-        document.querySelector('#portfolio').scrollIntoView()
+        document.querySelector('#portfolio').scrollIntoView({
+            behavior:'smooth'
+        })
     }
     //auto slide
 

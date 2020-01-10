@@ -141,7 +141,7 @@ class Footer extends React.Component{
                         </div>
                     </div>
                 </div>
-                <p>&copy; Gyftography 2020| Designed By AIBTECH</p>
+                <p>&copy; Gyftography {new Date().getFullYear()}| Designed By AIBTECH</p>
             </div>
         )
     }

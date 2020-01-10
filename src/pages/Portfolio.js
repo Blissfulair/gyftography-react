@@ -28,8 +28,8 @@ class Portfolio extends React.Component{
     }
 componentDidMount(){
 
-    //const url = 'http://localhost/ephraim';
-    const url = 'https://app.ephraimseleedha.com';
+    const url = 'http://localhost/ephraim';
+    //const url = 'https://app.ephraimseleedha.com';
     const car = []
     this.setState({loading:true},()=>{
         axios.get(`${url}/wp-json/wp/v2/posts/?_embed&per_page=`+12)
@@ -141,15 +141,19 @@ next =()=>{
                                 }
                                 switch(i){
                                     case 2:
+                                    if(portfolios.length > 4)
                                     name += ' item2';
                                     break;
                                     case 5:
+                                    if(portfolios.length > 7)
                                     name += ' item1';
                                     break;
                                     case 6:
+                                    if(portfolios.length > 8)
                                     name += ' item3';
                                     break;
                                     case 12:
+                                    if(portfolios.length === 12)
                                     name += ' item4';
                                     break;
                                     default:

@@ -1,5 +1,9 @@
 import React from 'react';
-import api from 'axios';
+import {
+    BrowserRouter as Router,
+    Link
+  } from "react-router-dom";
+//import api from 'axios';
 
 import home1 from '../img/home1.png';
 import about from '../img/about.png';
@@ -29,25 +33,23 @@ class Home extends React.Component{
     }
     
     componentDidMount(){
-
-        const media = document.querySelector('.media');
         const countDom = document.querySelector('.count');
         const hitems = document.querySelectorAll('.hitems');
         countDom.lastChild.innerText = '0'+ (hitems.length);
-        this.autoSlide();
+       this.autoSlide();
         this.videoContent()
-        const url = 'http://localhost/ephraim/';
-        //const car = []
-        this.setState({loading:true},()=>{
-                    //categories
-        //     console.log(this.state.categories)
-            api.get(`${url}/wp-json/wp/v2/posts`)
-            .then(res=>{
-                this.setState({loading:false, slider:res.data});
+    //     const url = 'http://aibtech.onlinewebshop.net';
+    //     //const car = []
+    //     this.setState({loading:true},()=>{
+    //                 //categories
+    //     //     console.log(this.state.categories)
+    //         api.get(`${url}/wp-json/wp/v2/posts`)
+    //         .then(res=>{
+    //             this.setState({loading:false, slider:res.data});
                 
-            })
-            .catch(error=>this.setState({loading:false,err:error.response.data}))
-        })
+    //         })
+    //         .catch(error=>this.setState({loading:false,err:error.response.data}))
+    //     })
 
     }
 
@@ -86,18 +88,17 @@ class Home extends React.Component{
             slideIndex = hitems.length;
         else if(slideIndex > hitems.length)
             slideIndex = 1
-            document.querySelector('.slide-'+slideIndex).style.transform = 'translateX(-100%)';
         this.setState({slideCount:slideIndex})
         for(let i = 0; i < hitems.length; i++){
             hitems[i].classList.remove('slider')
         }
             countDom.firstElementChild.innerText = '0'+ (slideIndex);
             document.querySelector('.slide-'+slideIndex).classList.add('slider')
-            document.querySelector('.slide-'+slideIndex).style.transition = 'all 200ms ease-in-out';
-           
-                document.querySelector('.slide-'+slideIndex).style.transform = 'translateX(0)';
        
     
+    }
+    goto=()=>{
+        document.querySelector('#portfolio').scrollIntoView()
     }
     //auto slide
 
@@ -126,7 +127,6 @@ class Home extends React.Component{
     }
 
     render(){
-        const sliders = this.state.slider;
         return(
             <section>
                 <div id="home" className="home">
@@ -149,7 +149,9 @@ class Home extends React.Component{
                         <span onClick={this.nextSlide} onMouseEnter={this.onHover} onMouseOut={this.autoSlide} className="next"></span>
                     </div>
                     <div className="button">
-                        <a href="#portfolio">see portfolio</a>
+                        <Router>
+                            <Link onClick={this.goto} to="/#portfolio">see portfolio</Link>
+                        </Router>
                     </div>
                 </div>
             </div>
@@ -168,10 +170,13 @@ class Home extends React.Component{
                 </div>
             </div>
             <div className="media-video">
-                <span className="close v-close"><a onClick={this.videoModal} href="#">&times;</a></span>
+                <Router>
+                    <span className="close v-close"><Link onClick={this.videoModal} to="">&times;</Link></span>
+                </Router>
                 <div className="inner-vid">
                     {this.state.video?(
                          <iframe 
+                         title="Gyftography on YouTube"
                          width="100%" 
                          height="100%" 
                          src={this.state.videoUrl} 

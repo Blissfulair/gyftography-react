@@ -1,4 +1,9 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Link
+} from "react-router-dom";
+
 import fb from '../img/fb.png';
 import intsagram from '../img/intsagram.png';
 import twitter from '../img/twitter.png';
@@ -107,29 +112,31 @@ class Footer extends React.Component{
                     <div className="inner">
                         <div className="row">
                             <ul>
-                                <li><a href="#">Wedding</a></li>
-                                <li><a href="#">Portrait</a></li>
-                                <li><a href="#">Fashion</a></li>
-                                <li><a href="#">Art</a></li>
+                                <Router>
+                                  <li><Link to="/wedding">Wedding</Link></li>
+                                  <li><Link to="/portrait">Portrait</Link></li>
+                                  <li><Link to="/fashion">Fashion</Link></li>
+                                  <li><Link to="/art">Art</Link></li>
+                                </Router>
                             </ul>
                         </div>
                         <div className="row">
                         <div className="theme">
                             <div className="nepa">
                                 <div>
-                                    <p>Display Mode</p>
+                                    <p>Theme Mode</p>
                                 </div>
-                                <span><img src={day} /></span>
+                                <span><img src={day} alt="" /></span>
                                 <div onClick={this.toggleTheme} className="slide theme-slide">
                                     <div onClick={this.toggleTheme} className="switch"></div>
                                 </div>
-                                <span><img src={night} /></span>
+                                <span><img src={night} alt="" /></span>
                             </div>
                             </div>
                             <ul>
-                                <li><a href="#"><img src= {fb} alt=""/></a></li>
-                                <li><a href="#"><img src={ intsagram } alt=""/></a></li>
-                                <li><a href="#"><img src={ twitter } alt=""/></a></li>
+                                <li><a href="https://www.facebook.com"><img src= {fb} alt="facebook icon"/></a></li>
+                                <li><a href="https://www.instagram.com"><img src={ intsagram } alt="instagram icon"/></a></li>
+                                <li><a href="https://www.twitter.com"><img src={ twitter } alt="twitter icon"/></a></li>
                             </ul>
                         </div>
                     </div>

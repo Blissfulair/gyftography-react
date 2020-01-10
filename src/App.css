@@ -54,6 +54,12 @@ body{
   justify-content: center;
   display: flex;
 }
+.loader .inner{
+  display: grid;
+  grid-template-columns: 100%;
+  align-items: center;
+  justify-content: center;
+}
 .loader .circle{
   width: 60px;
   height: 60px;
@@ -61,15 +67,15 @@ body{
   border-right-color: var(--links-color);
   border-radius: 50%;
   display: grid;
-  align-items: center;
-  justify-content: center;
+  align-self: center;
+  justify-self: center;
   animation: App-logo-spin infinite 2s linear;
 }
-.loader .circle span{
+.loader span{
   font-display: 'Poppins-SemiBold';
   font-size: 24px;
   color:var(--title-color);
-  animation: App-logo-spin infinite 2s linear;
+  display: block;
 }
 .home{
   position: relative;
@@ -210,7 +216,7 @@ cursor: pointer;
   left: -15%;
   background: var(--primary-color);
 }
-.hambuger:hover{
+.open:hover, .close:hover{
   opacity: 0.5;
 }
 .hambuger .row{
@@ -695,6 +701,7 @@ cursor: pointer;
   font-size: 13px;
   line-height: 2.5;
   font-family: 'Poppins-Bold';
+  white-space: nowrap;
   color: var(--footer-theme);
 }
 .footer .inner .row:last-child ul{
@@ -747,7 +754,7 @@ cursor: pointer;
 
 
 .mobile-menu{
-  z-index: 90;
+  z-index: 101;
   display: none;
   position: absolute;
   right: 2%;

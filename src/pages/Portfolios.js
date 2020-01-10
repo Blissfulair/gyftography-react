@@ -9,7 +9,7 @@ import portfolio from '../img/about.png';
 
 
 
-class Portfolio extends React.Component{
+class Portfolios extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -28,8 +28,8 @@ class Portfolio extends React.Component{
     }
 componentDidMount(){
 
-    //const url = 'http://localhost/ephraim';
-    const url = 'http://aibtech.onlinewebshop.net';
+    const url = 'http://localhost/ephraim';
+    //const url = 'http://aibtech.onlinewebshop.net';
     const car = []
     this.setState({loading:true},()=>{
         axios.get(`${url}/wp-json/wp/v2/posts/?_embed&per_page=`+12)
@@ -221,4 +221,4 @@ next =()=>{
     }
 }
 
-export default Portfolio;
+export default Portfolios;

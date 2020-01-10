@@ -1,4 +1,8 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Route
+} from "react-router-dom";
 
 import Header from './components/Header';
 import Home from './pages/Home';
@@ -24,6 +28,8 @@ import './App.css';
 class App extends React.Component{
 
 componentDidMount(){
+  // window.onscroll = ()=>{
+  // }
   window.onload = ()=>{
     document.querySelector('.loader').style.display = 'none'
   }
@@ -37,8 +43,13 @@ render(){
     <div className="site">
         <div className="main">
             <Header/>
-            <Home/>
+            <Router>
+            <Route path="/">
+              <Home/>
+            </Route>
+            
             <div id="about" className="about container">
+            
                 <About/>
             </div>
             <div id="portfolio" className="portfolio container">
@@ -47,17 +58,21 @@ render(){
             <div id="contact" className="contact container">
                 <Contact/>
             </div>
+            </Router>
             <div className="footer">
                 <Footer/>
             </div>
             <div className="loader">
-              <div className="circle">
-                <span>Gyftography</span>
-              </div>
+                <div className="inner">
+                  <div className="circle"></div>
+                  <span>Gyftography</span>
+                </div>
             </div>
         </div>
     </div>
+
   </div>
+
   );
 }
 }

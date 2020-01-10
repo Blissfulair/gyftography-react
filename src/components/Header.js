@@ -1,4 +1,12 @@
 import React from 'react';
+import {
+    BrowserRouter as Router,
+    // Switch,
+    // Route,
+    Link
+  } from "react-router-dom";
+// import Footer from './Footer';
+// import Portfolios from '../pages/Portfolios';
 
 class Header extends React.Component{
     constructor(props){
@@ -11,7 +19,6 @@ class Header extends React.Component{
 
     componentDidMount(){
         let lastNav='';
-
         window.onscroll = (e)=>{
              navColor()
             if(!this.isInViewport(document.querySelector('.home'))){
@@ -31,13 +38,17 @@ class Header extends React.Component{
             var elements = (document.querySelector('.menu') != null)?document.querySelector('.menu').children: document.querySelector('.mmenu').firstElementChild.children;
             for(var i = 0; i < elements.length; i++){
             var nav = elements[i].firstElementChild.getAttribute('href').split('#')[1];
+           nav = (nav !== undefined)? nav:'home'
+            
                 elements[i].firstElementChild.classList.remove('active')
+
                 var element = document.getElementById(nav);
+                nav = (nav === 'home')?'/': '/#'+nav;
                 if(element != null && elementInViewPort(element)){
                     lastNav = nav
-                    document.querySelector('[href="#'+nav+'"]').classList.add('active')
-                }else{
-                    document.querySelector('[href="#'+lastNav+'"]').classList.add('active')
+                   document.querySelector('[href="'+nav+'"]').classList.add('active')
+                }else if(lastNav !== ''){
+                    document.querySelector('[href="'+lastNav+'"]').classList.add('active')
                 }
                 
                 
@@ -65,9 +76,15 @@ class Header extends React.Component{
     headerNav(e){
         const menuList = e.target.parentElement.parentElement.children;
         for(let i = 0; i < menuList.length; i++){
-            menuList[i].firstElementChild.removeAttribute('class')
+            menuList[i].firstElementChild.classList.remove('active')
         }
-        e.target.parentElement.firstElementChild.classList.add('active')
+       e.target.parentElement.firstElementChild.classList.add('active')
+        let nav = e.target.parentElement.firstElementChild.getAttribute('href').split('#')[1];
+        nav = (nav === undefined)?'home':nav;
+        //document.querySelector('#'+nav).style.transition = 'all 3000ms ease-in-out'
+        document.querySelector('#'+nav).scrollIntoView({
+            behavior:'smooth'
+        })
     }
 
     //close the mobile nav
@@ -97,13 +114,14 @@ class Header extends React.Component{
     //to render the Header HTML
     render(){
         return (
+            <Router>
             <div className="inner-header">
                 <div className="header">
                     <ul className="menu">
-                        <li ><a onClick={this.headerNav} href="#home" className="active">Home</a></li>
-                        <li><a onClick={this.headerNav} href="#about">About</a></li>
-                        <li><a onClick={this.headerNav} href="#portfolio">Portfolio</a></li>
-                        <li><a onClick={this.headerNav} href="#contact">Contact</a></li>
+                        <li ><Link onClick={this.headerNav} to="/" className="active">Home</Link></li>
+                        <li><Link onClick={this.headerNav} to="/#about">About</Link></li>
+                        <li><Link onClick={this.headerNav} to="/#portfolio">Portfolio</Link></li>
+                        <li><Link onClick={this.headerNav} to="/#contact">Contact</Link></li>
                     </ul>
                     <div className="main-menu">
                         <div onClick={this.mainMenu}  className="hambuger">
@@ -144,13 +162,21 @@ class Header extends React.Component{
 
                 <div className="mmenu">
                     <ul>
-                    <li><a data-href="#home" href="#home">Home</a></li>
-                    <li><a data-href="#portfolio" href="#portfolio">Portfolio</a></li>
-                    <li><a data-href="#about" href="#about">About</a></li>
-                    <li><a data-href="#contact" href="#contact">Contact</a></li>
+                        <li ><Link onClick={this.headerNav} to="/" className="active">Home</Link></li>
+                        <li><Link onClick={this.headerNav} to="/#about">About</Link></li>
+                        <li><Link onClick={this.headerNav} to="/#portfolio">Portfolio</Link></li>
+                        <li><Link onClick={this.headerNav} to="/#contact">Contact</Link></li>
                     </ul>
                 </div>
             </div>
+            {/* <Switch>
+                <Header/>
+                <Route path="/portfolios">
+                <Portfolios/>
+                </Route>
+                <Footer/>
+            </Switch> */}
+        </Router>
         )
     }
 }

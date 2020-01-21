@@ -4,12 +4,6 @@ import {
   Link
 } from "react-router-dom";
 
-import fb from '../img/fb.png';
-import intsagram from '../img/intsagram.png';
-import twitter from '../img/twitter.png';
-
-import day from '../img/day.png';
-import night from '../img/night.png';
 
 class Footer extends React.Component{
     constructor(props){
@@ -59,11 +53,15 @@ class Footer extends React.Component{
         this.setState({
             currentTheme:'light', position: 'start'})
         this.setTheme('dark')
+        document.querySelector('.icon-g-dark').style.opacity='1';
+        document.querySelector('.icon-g-light2').style.opacity='0.33';
        }else{
         this.setTheme('light')
         switchSlide.style.justifyContent= 'start'
         this.setState({
          currentTheme:'dark', position: 'end'})
+         document.querySelector('.icon-g-dark').style.opacity='0.33';
+         document.querySelector('.icon-g-light2').style.opacity='1';
        }
 
 
@@ -92,6 +90,8 @@ class Footer extends React.Component{
           switchSlide.style.justifyContent= this.state.position;
           this.setState({
             currentTheme:'dark', position: 'end'})
+            document.querySelector('.icon-g-dark').style.opacity='0.33';
+            document.querySelector('.icon-g-light2').style.opacity='1';
         }else{
           localStorage.setItem('theme','dark');
           switchSlide.style.justifyContent= 'start';
@@ -101,6 +101,8 @@ class Footer extends React.Component{
             currentTheme:'light',
             position:'start'
           })
+          document.querySelector('.icon-g-dark').style.opacity='1';
+          document.querySelector('.icon-g-light2').style.opacity='0.33';
         }
       }
     render(){
@@ -121,22 +123,22 @@ class Footer extends React.Component{
                             </ul>
                         </div>
                         <div className="row">
-                        <div className="theme">
+                          <div className="theme">
                             <div className="nepa">
                                 <div>
                                     <p>Theme Mode</p>
                                 </div>
-                                <span><img src={day} alt="" /></span>
+                                <span><span className="icon-g-light2"><span className="path1"></span><span className="path2"></span></span></span>
                                 <div onClick={this.toggleTheme} className="slide theme-slide">
                                     <div onClick={this.toggleTheme} className="switch"></div>
                                 </div>
-                                <span><img src={night} alt="" /></span>
+                                <span><i className="icon-g-dark"></i></span>
                             </div>
-                            </div>
+                          </div>
                             <ul>
-                                <li><a href="https://www.facebook.com"><img src= {fb} alt="facebook icon"/></a></li>
-                                <li><a href="https://www.instagram.com"><img src={ intsagram } alt="instagram icon"/></a></li>
-                                <li><a href="https://www.twitter.com"><img src={ twitter } alt="twitter icon"/></a></li>
+                                <li><a href="https://www.facebook.com"><i className="icon-g-fb"></i></a></li>
+                                <li><a href="https://www.instagram.com"><i className="icon-g-insta"></i></a></li>
+                                <li><a href="https://www.twitter.com"><i className="icon-g-twitter"></i></a></li>
                             </ul>
                         </div>
                     </div>

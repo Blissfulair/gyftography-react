@@ -42,6 +42,15 @@ body{
   background-color: var(--background-color);
   color: var(--secondary-text-color)
 }
+[class^="icon-"], [class*=" icon-"]{
+  font-size: 24px;
+}
+.icon-g-fb{
+  font-size: 26px;
+}
+.icon-g-light1 .path1::before{
+  color: var(--links-color)
+}
 .loader{
   position: fixed;
   top: 0;
@@ -572,7 +581,7 @@ cursor: pointer;
   color: var(--secondary-text-color);
   font-family: 'Poppins-Medium';
   font-size: 14px;
-  top: -23px;
+  top: -14px;
   position: relative;
   background: transparent;
   transition: all 50ms ease-in-out;
@@ -699,7 +708,7 @@ cursor: pointer;
 }
 .footer .inner .row p{
   font-size: 13px;
-  line-height: 2.5;
+  margin-bottom: 6%;
   font-family: 'Poppins-Bold';
   white-space: nowrap;
   color: var(--footer-theme);
@@ -738,9 +747,7 @@ cursor: pointer;
   align-content: center;
   cursor: pointer;
 }
-.nepa span:last-child{
-  opacity: 0.69;
-}
+
 .nepa .slide .switch{
   background: var(--knob-color);
   box-shadow: 2px 1px 4px var(--links-color);
@@ -876,6 +883,14 @@ cursor: pointer;
   box-shadow: 0px 0px 20px 20px var(--main-overlay);
   border-radius: 5px;
 }
+.inner-media .img img{
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+.inner-media .img img{
+  vertical-align: middle;
+}
 .inner-media #prev{
   border-right: none;
   border-top: none;
@@ -913,6 +928,9 @@ cursor: pointer;
 @media (max-width: 768px){
   .footer .inner .row:last-child .theme{
     margin-left: 0;
+  }
+  .footer .inner .row p{
+    margin-bottom: 10%;
   }
   .activate span, .theme, .slide span, .play, .v-close, #prev, #next, .close{
       cursor: default !important;
@@ -1100,7 +1118,9 @@ cursor: pointer;
       .activate span, .theme, .slide span, .play, .v-close, #prev, #next, .close{
           cursor: default !important;
       }
-  
+      .footer .inner .row p{
+        margin-bottom: 6%;
+      }
       .site .main .inner-bottom{
           grid-auto-flow: column;
           margin-bottom: 300px;
@@ -1194,7 +1214,9 @@ cursor: pointer;
       .activate span, .theme, .slide span, .play, .v-close, #prev, #next, .close{
           cursor: default !important;
       }
-  
+      .theme{
+        margin-right: 32% !important;
+      }
 
   }
   @media (width: 667px) and (height: 375px){

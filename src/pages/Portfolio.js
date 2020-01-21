@@ -10,6 +10,7 @@ import portfolio from '../img/about.png';
 
 
 class Portfolio extends React.Component{
+    //All portfolio images must be of size 600px x 600px
     constructor(props){
         super(props);
         this.state = {
@@ -110,7 +111,8 @@ showPortfolio = (n)=>{
             else if(slideIndex > portfolios.length)
             return
             const media = document.querySelector('.media');
-            media.firstElementChild.children[1].style.backgroundImage = document.querySelector('.p-'+slideIndex).style.backgroundImage;
+            const url = document.querySelector('.p-'+slideIndex).style.backgroundImage;
+            media.firstElementChild.children[1].firstElementChild.setAttribute('src',url.substr(5,url.split('').length-7));
             media.firstElementChild.style.display = 'grid';
             media.classList.remove('no-display')
             media.classList.add('display')
@@ -215,6 +217,7 @@ next =()=>{
                     <div className="inner-media">
                         <div onClick={this.prev} id="prev"></div>
                         <div className="img">
+                        <img src="" alt=""/>
                         <Router>
                             <span className="close"><Link onClick={this.modalClose} to="">&times;</Link></span>
                         </Router>

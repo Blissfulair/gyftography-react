@@ -29,8 +29,8 @@ class Portfolio extends React.Component{
     }
 componentDidMount(){
 
-    //const url = 'http://localhost/ephraim';
-    const url = 'https://app.ephraimseleedha.com';
+    const url = 'http://localhost/ephraim';
+    //const url = 'https://app.ephraimseleedha.com';
     const car = []
     this.setState({loading:true},()=>{
         axios.get(`${url}/wp-json/wp/v2/posts/?_embed&per_page=`+12)
